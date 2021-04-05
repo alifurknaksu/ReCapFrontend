@@ -1,0 +1,48 @@
+<div class="card mb-3 mt-3">
+  <div class="card-header">
+    <h5 class="card-title">Details</h5>
+  </div>
+  <div class="card-body text-center">
+    <p class="card-text">
+      <span class="text-muted">Brand:</span> {{ car.brandName }}
+    </p>
+    <p class="card-text">
+      <span class="text-muted">Model:</span> {{ car.model }}
+    </p>
+    <p class="card-text">
+      <span class="text-muted">Year:</span> {{ car.modelYear }}
+    </p>
+    <p class="card-text">
+      <span class="text-muted">Color:</span> {{ car.colorName }}
+    </p>
+    <p class="card-text">
+      <span class="text-muted">Daily Price: </span> {{ car.dailyPrice }} ₺
+    </p>
+    <div class="d-grid gap-2">
+      <button
+        (click)="rent()"
+        type="button"
+        class="btn btn-primary"
+      >
+        Rent
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="card mb-3 mt-3">
+  <div class="card-header">
+    <h5 class="card-title">Images</h5>
+  </div>
+  <div class="card-body">
+    <table>
+      <tbody>
+        <tr *ngFor="let image of car.images">
+          <td>
+            <img [src]="getImage(image.imagePath)" class="card-img" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

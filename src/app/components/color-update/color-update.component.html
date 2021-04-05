@@ -1,0 +1,87 @@
+<div *ngIf="isUpdate" class="card mb-3 mt-3">
+  <div class="card-body">
+    <div class="mb-3 mt-3">
+      <form [formGroup]="colorUpdateForm">
+        <label for="name" class="form-group">Color Name</label>
+        <div class="form-group">
+          <input
+            id="name"
+            type="text"
+            formControlName="name"
+            class="form-control"
+          />
+        </div>
+      </form>
+      <div class="mb-3 mt-3">
+        <div class="d-grid gap-2">
+          <button (click)="update()" type="button" class="btn btn-success">
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!color && colors" class="card mb-3 mt-3">
+  <div class="card-header">
+    <h5 class="card-title">Update Color</h5>
+  </div>
+  <div class="card-body">
+    <table class="table table-light table-striped">
+      <thead>
+        <tr>
+          <th class="text-muted">Color</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let color of colors">
+          <td>{{ color.name }}</td>
+          <td>
+            <button
+              (click)="checkUpdate(color)"
+              type="button"
+              class="btn btn-success"
+            >
+              Update
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div *ngIf="color" class="card mb-3 mt-3">
+  <div class="card-header">
+    <h5 class="card-title">Color to be update</h5>
+  </div>
+  <div class="card-body">
+    <div class="mb-3 mt-3">
+      <p class="text-danger fw-bolder">{{ color.name }}</p>
+      <form [formGroup]="selectedColorUpdateForm">
+        <label for="name" class="form-group">Color Name</label>
+        <div class="form-group">
+          <input
+            id="name"
+            type="text"
+            formControlName="name"
+            class="form-control"
+          />
+        </div>
+      </form>
+      <div class="mb-3 mt-3">
+        <div class="d-grid gap-2">
+          <button
+            (click)="selectedColorUpdate()"
+            type="button"
+            class="btn btn-success"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

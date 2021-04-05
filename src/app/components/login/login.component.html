@@ -1,0 +1,32 @@
+<div class="card mb-3 mt-3">
+  <div class="card-header">
+    <h5 class="card-title">Login</h5>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="loginForm">
+      <label for="email" class="form-label">E-Mail</label>
+      <div class="form-group">
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          formControlName="email"
+        />
+      </div>
+      <label for="password" class="form-label">Password</label>
+      <div class="form-group">
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          formControlName="password"
+        />
+      </div>
+      <div class="d-grid gap-2 mb-3 mt-3">
+        <button (click)="login()" type="submit" class="btn btn-primary">
+          Login
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

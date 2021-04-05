@@ -1,0 +1,92 @@
+<div *ngIf="!cardNumber" class="card mb-3 mt-3">
+  <div class="card-header">
+    <h5 class="card-title">Payment</h5>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="paymentOperationForm">
+      <label for="cardNumber" class="form-group">Card Number</label>
+      <div class="form-group">
+        <input
+          id="cardNumber"
+          type="string"
+          formControlName="cardNumber"
+          class="form-control"
+        />
+      </div>
+
+      <label for="cardLastUseDate" class="form-group"
+        >Expiration Date (Month/Year)</label
+      >
+      <div class="form-group">
+        <input
+          id="cardLastUseDate"
+          type="string"
+          formControlName="cardLastUseDate"
+          class="form-control"
+        />
+      </div>
+
+      <label for="securityValue" class="form-group"
+        >CVC</label
+      >
+      <div class="form-group">
+        <input
+          id="securityValue"
+          type="string"
+          formControlName="securityValue"
+          class="form-control"
+        />
+      </div>
+
+      <label for="firstName" class="form-group">Name</label>
+      <div class="form-group">
+        <input
+          id="firstName"
+          type="string"
+          formControlName="firstName"
+          class="form-control"
+        />
+      </div>
+
+      <label for="lastName" class="form-group">Last Name</label>
+      <div class="form-group">
+        <input
+          id="lastName"
+          type="string"
+          formControlName="lastName"
+          class="form-control"
+        />
+      </div>
+      <div class="d-grid gap-2 mb-3 mt-3">
+        <button (click)="pay()" type="button" class="btn btn-primary">
+          Pay
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="cardNumber" class="card mb-3 mt-3">
+  <div class="card-header">
+    <h5 class="card-title">
+      Kayıtlı Kart
+    </h5>
+  </div>
+  <div class="card-body">
+    <p class="card-text"> Do you want to pay with credit card number {{cardNumber}}? </p>
+    <button (click)="payWithBeforeCard()" type="button" class="btn btn-primary">
+      Pay
+    </button>
+    <p class="card-text">
+      <a (click)="changeCreditCard()" class="nav-lik">
+        Use another card
+      </a>
+    </p>
+    
+  </div>
+</div>
+
+
+
+
+

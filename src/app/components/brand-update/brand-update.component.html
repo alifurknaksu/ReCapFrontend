@@ -1,0 +1,87 @@
+<div *ngIf="isUpdate" class="card mb-3 mt-3">
+  <div class="card-body">
+    <div class="mb-3 mt-3">
+      <form [formGroup]="brandUpdateForm">
+        <label for="name" class="form-group">Brand Name</label>
+        <div class="form-group">
+          <input
+            id="name"
+            type="text"
+            formControlName="name"
+            class="form-control"
+          />
+        </div>
+      </form>
+      <div class="mb-3 mt-3">
+        <div class="d-grid gap-2">
+          <button (click)="update()" type="button" class="btn btn-success">
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!brand && brands" class="card mb-3 mt-3">
+  <div class="card-header">
+    <h5 class="card-title">Update the brand</h5>
+  </div>
+  <div class="card-body">
+    <table class="table table-light table-striped">
+      <thead>
+        <tr>
+          <th class="text-muted">Brand</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let brand of brands">
+          <td>{{ brand.name }}</td>
+          <td>
+            <button
+              (click)="checkUpdate(brand)"
+              type="button"
+              class="btn btn-success"
+            >
+              Update
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div *ngIf="brand" class="card mb-3 mt-3">
+  <div class="card-header">
+    <h5 class="card-title">Brand to be update</h5>
+  </div>
+  <div class="card-body">
+    <div class="mb-3 mt-3">
+      <p class="text-danger fw-bolder">{{ brand.name }}</p>
+      <form [formGroup]="selectedBrandUpdateForm">
+        <label for="name" class="form-group">Brand Name</label>
+        <div class="form-group">
+          <input
+            id="name"
+            type="text"
+            formControlName="name"
+            class="form-control"
+          />
+        </div>
+      </form>
+      <div class="mb-3 mt-3">
+        <div class="d-grid gap-2">
+          <button
+            (click)="selectedBrandUpdate()"
+            type="button"
+            class="btn btn-success"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

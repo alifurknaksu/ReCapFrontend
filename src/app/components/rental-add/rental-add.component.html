@@ -1,0 +1,56 @@
+<div class="card mb-3 mt-3">
+  <div class="card-header">
+    <h5 class="card-title">Müşteri</h5>
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+      <span class="text-muted">Araba:</span>
+      {{ car.brandName }}
+      {{ car.model }}
+      {{ car.modelYear }}
+      {{ car.colorName }}
+    </p>
+    <p class="card-text">
+      <span class="text-muted">Customer number:</span>
+      {{ customer.id }}
+    </p>
+  </div>
+</div>
+
+<div class="card mb-3 mt-3">
+  <div class="card-header">
+    <h5 class="card-title">Date</h5>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="rentalAddForm">
+      <label for="customerId" class="form-group mt-3">Date of purchase</label>
+      <div class="form-group">
+        <input
+          id="rentDate"
+          type="date"
+          formControlName="rentDate"
+          class="form-control"
+        />
+      </div>
+      <label for="customerId" class="form-group mt-3">Date of Delivery</label>
+      <div class="form-group">
+        <input
+          id="returnDate"
+          type="date"
+          formControlName="returnDate"
+          class="form-control"
+        />
+      </div>
+      <div class="d-grid gap-2 mb-3 mt-3">
+        <button
+          (click)="accept()"
+          type="button"
+          class="btn btn-primary form-group"
+          routerLink="/car/rental/payment"
+        >
+          Approve
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

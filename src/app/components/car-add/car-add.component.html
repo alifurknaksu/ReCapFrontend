@@ -1,0 +1,150 @@
+<div *ngIf="brands" class="card mb-3 mt-3">
+  <div class="card-header">
+    <h5 class="card-title">Brands</h5>
+  </div>
+  <div class="card-body">
+    <table class="table table-light table-striped">
+      <thead>
+        <tr>
+          <th class="text-muted">Id</th>
+          <th class="text-muted">Brand</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let brand of brands">
+          <td>{{ brand.id }}</td>
+          <td>{{ brand.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div *ngIf="colors" class="card mb-3 mt-3">
+  <div class="card-header">
+    <h5 class="card-title">Colors</h5>
+  </div>
+  <div class="card-body">
+    <table class="table table-light table-striped">
+      <thead>
+        <tr>
+          <th class="text-muted">Id</th>
+          <th class="text-muted">Color</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let color of colors">
+          <td>{{ color.id }}</td>
+          <td>{{ color.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card mb-3 mt-3">
+  <div class="card-header">
+    <h5 class="card-title">Adding car</h5>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="carAddForm">
+      <label for="brandId" class="form-group">Brand Id</label>
+      <div class="form-group">
+        <input
+          id="brandId"
+          type="number"
+          formControlName="brandId"
+          class="form-control"
+        />
+      </div>
+      <label for="colorId" class="form-group">Color Id</label>
+      <div class="form-group">
+        <input
+          id="colorId"
+          type="number"
+          formControlName="colorId"
+          class="form-control"
+        />
+      </div>
+      <label for="model" class="form-group">Brand</label>
+      <div class="form-group">
+        <input
+          id="model"
+          type="text"
+          formControlName="model"
+          class="form-control"
+        />
+      </div>
+      <label for="modelYear" class="form-group">Yıl</label>
+      <div class="form-group">
+        <input
+          id="modelYear"
+          type="text"
+          formControlName="modelYear"
+          class="form-control"
+        />
+      </div>
+      <label for="dailyPrice" class="form-group">Pay</label>
+      <div class="form-group">
+        <input
+          id="dailyPrice"
+          type="number"
+          formControlName="dailyPrice"
+          class="form-control"
+        />
+      </div>
+      <label for="description" class="form-group">Explanation</label>
+      <div class="form-group">
+        <input
+          id="description"
+          type="text"
+          formControlName="description"
+          class="form-control"
+        />
+      </div>
+      <div class="d-grid gap-2 mt-3 mb-3">
+        <button (click)="add()" type="button" class="btn btn-success">
+          Add
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="cars" class="card mb-3 mt-3">
+  <div class="card-header">
+    <h5 class="card-title">Cars</h5>
+  </div>
+  <div class="card-body">
+    <table class="table table-light table-striped">
+      <thead>
+        <tr>
+          <th class="text-muted">Brand</th>
+          <th class="text-muted">Model</th>
+          <th class="text-muted">Year</th>
+          <th class="text-muted">Color</th>
+          <th class="text-muted">Daily price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let car of cars">
+          <td>{{ car.brandName }}</td>
+          <td>{{ car.model }}</td>
+          <td>{{ car.modelYear }}</td>
+          <td>{{ car.colorName }}</td>
+          <td>{{ car.dailyPrice }} ₺</td>
+          <td>
+            <button
+              routerLink="/car/update/{{ car.id }}"
+              type="button"
+              class="btn btn-success"
+            >
+              Update
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

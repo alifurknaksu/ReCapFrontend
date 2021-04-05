@@ -1,0 +1,99 @@
+<div *ngIf="isAuth" class="mb-3 mt-3">
+  <div class="alert alert-info">
+    <p>Your findeks point: {{ userFindeks }}</p>
+    <p>Your balance: {{ balance }} ₺</p>
+  </div>
+</div>
+
+<div class="mb-3 mt-3">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title">Search</h5>
+    </div>
+    <div class="card-body">
+      <select class="form-select" [(ngModel)]="selectedOptionValue">
+        <option value="brand">Search by brand</option>
+        <option value="model">Search by model</option>
+        <option value="modelYear">Search by years</option>
+        <option value="color">Search by color</option>
+      </select>
+      <div class="mb-3 mt-3">
+        <div *ngIf="selectedOptionValue === 'brand'" class="mb-3 mt-3">
+          <input
+            type="search"
+            [(ngModel)]="filterByBrandName"
+            class="form-control"
+          />
+        </div>
+        <div *ngIf="selectedOptionValue === 'model'" class="mb-3 mt-3">
+          <input
+            type="search"
+            [(ngModel)]="filterByModel"
+            class="form-control"
+          />
+        </div>
+        <div *ngIf="selectedOptionValue === 'modelYear'" class="mb-3 mt-3">
+          <input
+            type="search"
+            [(ngModel)]="filterByModelYear"
+            class="form-control"
+          />
+        </div>
+        <div *ngIf="selectedOptionValue === 'color'" class="mb-3 mt-3">
+          <input
+            type="search"
+            [(ngModel)]="filterByColor"
+            class="form-control"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mt-3 mb-3">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th>Minimum Findeks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let car of carsDto
+              | filter
+                : filterByBrandName
+                : filterByModel
+                : filterByModelYear
+                : filterByColor
+          "
+        >
+          <td>
+            <img [src]="getImage('default.jpg')" width="100px" alt="logo" />
+          </td>
+          <td>
+            {{ car.brandName }} {{ car.model }} {{ car.modelYear }}
+            {{ car.colorName }}
+          </td>
+          <td class="fw-bolder">{{ car.dailyPrice }} ₺</td>
+          <td>
+            <button
+              routerLink="/cars/car/{{ car.id }}"
+              (click)="setCurrentCar(car)"
+              class="btn btn-primary"
+            >
+              Details
+            </button>
+          </td>
+          <td class="text-center">{{ car.findeks }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

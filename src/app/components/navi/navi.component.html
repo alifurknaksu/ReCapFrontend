@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a routerLink="/" class="navbar-brand">RENTACAR</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a routerLink="/" class="nav-link active" aria-current="page"
+            >Home Page</a
+          >
+        </li>
+      </ul>
+      <form class="d-flex">
+        <ul *ngIf="!isAuthenticated" class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a routerLink="/register" class="nav-link" aria-current="page"
+              >Sign Up</a
+            >
+          </li>
+          <li class="nav-item">
+            <a routerLink="/login" class="nav-link" aria-current="page"
+              >Login</a
+            >
+          </li>
+        </ul>
+        <ul *ngIf="isAuthenticated" class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li *ngIf="isAdmin" class="nav-item">
+            <a routerLink="/admin" class="nav-link active" aria-current="page"
+              >Admin</a
+            >
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              {{ userFullName }}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li routerLink="/user/update" class="dropdown-item">
+                My Informations
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a
+              (click)="logout()"
+              routerLink="/logout"
+              class="nav-link"
+              aria-current="page"
+              >Logout</a
+            >
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
+</nav>

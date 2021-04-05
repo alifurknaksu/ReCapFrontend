@@ -1,0 +1,55 @@
+<div class="card mb-3 mt-3">
+  <div class="card-header">
+    <h5 class="card-title">Add Color</h5>
+  </div>
+  <div class="card-body">
+    <button (click)="list()" type="button" class="btn btn-success">
+      Show all colors
+    </button>
+    <button (click)="deList()" type="button" class="btn btn-danger ms-3">
+      Hide all colors
+    </button>
+    <div *ngIf="colors" class="mb-3 mt-3">
+      <table class="table table-light table-striped">
+        <thead>
+          <tr>
+            <th class="text-muted">Color</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let color of colors">
+            <td>{{ color.name }}</td>
+            <td>
+              <button
+                routerLink="/color/update/{{ color.id }}"
+                type="button"
+                class="btn btn-success"
+              >
+                Update
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mb-3 mt-3">
+      <form [formGroup]="colorAddForm">
+        <label for="name" class="form-group">Color Name</label>
+        <div class="form-group">
+          <input
+            id="name"
+            type="text"
+            formControlName="name"
+            class="form-control"
+          />
+        </div>
+        <div class="d-grid gap-2 mb-3 mt-3">
+          <button (click)="add()" type="button" class="btn btn-primary">
+            Add
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

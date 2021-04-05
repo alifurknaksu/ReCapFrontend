@@ -1,0 +1,15 @@
+<div class="mt-3 mb-3">
+  <ul *ngIf="brands" class="list-group">
+    <li routerLink="/cars" class="list-group-item bg-danger text-light">
+      All Cars
+    </li>
+    <li
+      routerLink="cars/brand/{{ brand.id }}"
+      (click)="setCurrentBrand(brand)"
+      *ngFor="let brand of brands"
+      class="list-group-item bg-light"
+    >
+      {{ brand.name }}
+    </li>
+  </ul>
+</div>
